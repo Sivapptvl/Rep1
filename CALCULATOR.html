@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Calculator</title>
+<meta name="viewport" content="user-scalable=no">
+<!---------------------------STYLE--------------------------------------->
+<style>
+body{
+display: flex;
+justify-content: center;
+user-select: none;
+}
+
+.window{
+    background-color : gray;
+
+    width : 100vw;
+    height: 100vh;
+
+    display: grid;
+    grid-template-rows: 25fr 75fr;
+}
+
+.panel{
+    background-color: black;
+
+    color: white;
+    font-size: 5rem;
+    padding-right: 10%;
+
+    display: grid;
+
+    justify-content: ;
+    align-items: center;
+
+    overflow-x: scroll;
+}
+
+.controls{
+    background-color: deepskyblue;
+
+    display: grid;
+
+    justify-items: center;
+    align-items: center;
+
+    grid-template-rows: repeat(4, auto);
+    grid-template-columns: repeat(4, auto);
+}
+
+.controls > div{
+    background-color: yellow;
+
+    width: 33%;
+    height: 33%;
+
+    font-size: 2em;
+
+    border: 5px solid red;
+    border-radius: 50%;
+
+    box-shadow: 50px;
+
+    display: grid;
+
+    justify-content: center;
+    align-content: center;
+}
+
+#back{
+    background-color: white;
+    font-size: 1em;
+    font-style: bold;
+
+    display: grid;
+
+    border: 0.33em solid red;
+    border-radius: 0px;
+
+    justify-items: center;
+    align-items: center;    
+}
+
+.controls > div:hover {
+    border-color: darkmagenta;
+}
+</style>
+<!-----------------------------SCRIPT------------------------------------->
+<script type="text/javascript">
+function ins(s){
+	panel = document.querySelectorAll(".panel");
+	text = panel[0].innerHTML += s.innerHTML;
+}
+
+function backspace(){
+	panel = document.querySelectorAll(".panel");
+	panel[0].innerHTML = panel[0].innerHTML.slice(0, panel[0].innerHTML.length-1);
+}
+
+function equal(){
+	panel = document.querySelectorAll(".panel");
+	eqn = panel[0].innerHTML;
+	panel[0].innerHTML = eval(eqn);
+}
+</script>
+</head>
+
+<body>
+
+<div class="window">
+	<div class="panel" id="panel" name="panel" ontouchstart="panelfn()"></div>
+	<div class="controls" ontouchstart="controlfn()">
+		<div id="one"   ontouchstart="ins(this)">1</div>
+		<div id="two"   ontouchstart="ins(this)">2</div>
+		<div id="three" ontouchstart="ins(this)">3</div>
+		<div id="div"   ontouchstart="ins(this)">/</div>
+		<div id="four"  ontouchstart="ins(this)">4</div>
+		<div id="five"  ontouchstart="ins(this)">5</div>
+		<div id="six"   ontouchstart="ins(this)">6</div>
+		<div id="mult"  ontouchstart="ins(this)">*</div>
+		<div id="seven" ontouchstart="ins(this)">7</div>
+		<div id="eight" ontouchstart="ins(this)">8</div>
+		<div id="nine"  ontouchstart="ins(this)">9</div>
+		<div id="sub"   ontouchstart="ins(this)">-</div>
+		<div id="back"  ontouchstart="backspace()">BKSP</div>
+		<div id="zero"  ontouchstart="ins(this)">0</div>
+		<div id="equal" ontouchstart="equal()"  >=</div>
+		<div id="add"   ontouchstart="ins(this)">+</div>
+	</div>
+</div>
+
+</body>
+</html>
